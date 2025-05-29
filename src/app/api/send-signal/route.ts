@@ -1,14 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
-  const authHeader = req.headers.get("authorization");
-  const secret = process.env.USERNAME;
-
-  // 1. Check for authorization
-  if (!authHeader || authHeader !== `Bearer ${secret}`) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
-
   const { message } = await req.json();
 
   const BOT_TOKEN = process.env.BOT_TOKEN;
